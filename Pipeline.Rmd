@@ -1,0 +1,43 @@
+---
+title: "Pipeline"
+author: "202310601"
+date: "November 2 2023"
+output: html_document
+---
+
+```{r setup, include=FALSE} 
+# this chunk contains code that sets global options for the entire .Rmd. 
+# we use include=FALSE to suppress it from the top of the document, but it will still appear in the appendix. 
+
+knitr::opts_chunk$set(echo = FALSE) # actually set the global chunk options. 
+# we set echo=FALSE to suppress code such that it by default does not appear throughout the document. 
+# note: this is different from .Rmd default
+```
+
+### Exercise 1 
+Here I will demonstrate the pipeline. 
+
+```{r ex1, message = FALSE}
+# Load in libraries:
+library(dplyr)
+
+# Define a function with a single argument data and perform a data transformation
+transform_orange <- function(data){
+  transform_data <- data %>%
+  mutate(age_squared = age^2) # squaring the 'age' variable
+  
+  return(transform_data)
+}
+
+# Call the function with the 'Orange' dataset
+transformed_orange_data <- transform_orange(Orange)
+transformed_orange_data
+
+```
+
+## Appendix: All code in this assignment
+
+```{r ref.label=knitr::all_labels(), echo=TRUE, eval=FALSE} 
+# this chunk generates the complete code appendix. 
+# eval=FALSE tells R not to run (``evaluate'') the code here (it was already run before).
+```
