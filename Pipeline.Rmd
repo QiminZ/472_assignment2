@@ -17,7 +17,7 @@ knitr::opts_chunk$set(echo = FALSE) # actually set the global chunk options.
 ### Exercise 1 
 Here I will demonstrate the pipeline. 
 
-```{r ex1, message = FALSE}
+```{r ex1.1, message = FALSE}
 # Load in libraries:
 library(dplyr)
 
@@ -32,6 +32,24 @@ transform_orange <- function(data){
 # Call the function with the 'Orange' dataset
 transformed_orange_data <- transform_orange(Orange)
 transformed_orange_data
+
+```
+
+```{r ex1.2}
+
+# Add a second argument to the same function
+transform_orange <- function(data, transformation_type = "age") {
+  if (transformation_type == "age") {
+    # Perform a data transformation on the 'age' variable
+    transformed_data <- data %>%
+      mutate(age = age^2)
+  } else if (transformation_type == "circumference") {
+    # Perform a data transformation on the 'circumference' variable (convert mm to inches)
+    transformed_data <- data %>%
+      mutate(circumference = circumference / 25.4)  
+  }
+  return(transformed_data)
+}
 
 ```
 
