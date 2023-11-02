@@ -1,5 +1,5 @@
 ---
-title: "Pipeline"
+title: "Step 3"
 author: "202310601"
 date: "November 2 2023"
 output: html_document
@@ -14,28 +14,9 @@ knitr::opts_chunk$set(echo = FALSE) # actually set the global chunk options.
 # note: this is different from .Rmd default
 ```
 
-### Exercise 1 
-Here I will demonstrate the pipeline. 
-
-```{r ex1.1, message = FALSE}
+```{r ex1.3, message = FALSE}
 # Load in libraries:
 library(dplyr)
-
-# Define a function with a single argument data and perform a data transformation
-transform_orange <- function(data){
-  transform_data <- data %>%
-  mutate(age_squared = age^2) # squaring the 'age' variable
-  
-  return(transform_data)
-}
-
-# Call the function with the 'Orange' dataset
-transformed_orange_data <- transform_orange(Orange)
-transformed_orange_data
-
-```
-
-```{r ex1.2}
 
 # Add a second argument to the same function
 transform_orange <- function(data, transformation_type = "age") {
@@ -50,6 +31,12 @@ transform_orange <- function(data, transformation_type = "age") {
   }
   return(transformed_data)
 }
+
+# Call the function with the 'Orange' dataset and specify 'transformation_type'
+transformed_orange_age <- transform_orange(Orange, transformation_type = "age")
+transformed_orange_age
+transformed_orange_circumference <- transform_orange(Orange, transformation_type = "circumference")
+transformed_orange_circumference
 
 ```
 
